@@ -56,9 +56,9 @@ object OpTick : SpellAction {
         }
 
         override fun cast(env: CastingEnvironment, image: CastingImage): CastingImage {
-            val timesTickedMap = image.getComponent(HexalImageComponents.TIMES_TICKED_MAP) ?: mutableMapOf()
-            timesTickedMap[pos] = (timesTickedMap[pos] ?: 0) + 1
-            val newImage = image.withComponent(HexalImageComponents.TIMES_TICKED_MAP, timesTickedMap)
+            val timesTickedMap = image.getComponent(HexalImageComponents.TIMES_TICKED_MAP) ?: mapOf()
+            val updatedMap = timesTickedMap + (pos to (timesTickedMap[pos] ?: 0) + 1)
+            val newImage = image.withComponent(HexalImageComponents.TIMES_TICKED_MAP, updatedMap)
 
             // https://github.com/haoict/time-in-a-bottle/blob/1.19/src/main/java/com/haoict/tiab/entities/TimeAcceleratorEntity.java
             val blockState = env.world.getBlockState(pos)

@@ -28,7 +28,7 @@ object HexalImageComponents {
         ))
 
     @JvmField
-    val TIMES_TICKED_MAP: ImageComponentType<MutableMap<BlockPos, Int>> = make("times_ticked_map",
+    val TIMES_TICKED_MAP: ImageComponentType<Map<BlockPos, Int>> = make("times_ticked_map",
         ImageComponentType(
             Codec.unboundedMap(BlockPos.CODEC, Codec.INT),
             ByteBufCodecs.map(::HashMap, BlockPos.STREAM_CODEC, ByteBufCodecs.INT),
